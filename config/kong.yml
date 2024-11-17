@@ -8,21 +8,6 @@ services:
       - name: service-one-route
         paths:
           - /service1
-        plugins:
-          - name: cors
-            config:
-              origins:
-                - "http://info.cern.ch"
-              methods:
-                - GET
-                - POST
-                - PUT
-                - DELETE
-                - OPTIONS
-              headers:
-                - "*"
-              exposed_headers:
-                - "*"
 
   - name: service-two
     url: http://host.docker.internal:3001
@@ -30,19 +15,3 @@ services:
       - name: service-two-route
         paths:
           - /service2
-
-plugins:
-  - name: cors
-    config:
-      origins:
-        - "*"
-      methods:
-        - GET
-        - POST
-        - PUT
-        - DELETE
-        - OPTIONS
-      headers:
-        - "*"
-      exposed_headers:
-        - "*"
