@@ -46,3 +46,13 @@ plugins:
         - "*"
       exposed_headers:
         - "*"
+
+  - name: rate-limiting
+    config:
+      minute: 5
+      policy: redis
+      redis_host: "kong-redis"
+      redis_port: 6379
+      redis_timeout: 2000
+      fault_tolerant: true
+      hide_client_headers: false # Make headers visible

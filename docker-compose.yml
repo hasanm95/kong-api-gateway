@@ -1,7 +1,19 @@
-# docker-compose.yml
 version: '3.8'
 
 services:
+  redis-stack:
+    image: redis/redis-stack:latest
+    container_name: kong-redis
+    ports:
+      - '6379:6379'
+      - '8002:8001'  # Changed from 8001 to avoid conflict with Kong admin API
+    volumes:
+      - redis-stack:/var/lib/redis-stack
+    environment:
+      - REDIS_ARGS=--save 900 1
+    networks:
+      - kong-net
+      
   kong:
     image: kong:latest
     container_name: kong
@@ -23,6 +35,11 @@ services:
       - "host.docker.internal:host-gateway"
     networks:
       - kong-net
+    depends_on:
+      - redis-stack
+
+volumes:
+  redis-stack:
 
 networks:
   kong-net:
