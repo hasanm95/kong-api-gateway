@@ -29,15 +29,15 @@ app.post('/logs', (req, res) => {
   console.log('Headers:', req.headers);
   
   if (Buffer.isBuffer(req.body)) {
-    console.log('Raw body:', req.body.toString());
+    console.log('Raw body:', 'req.body.toString()');
     try {
       const jsonBody = JSON.parse(req.body.toString());
-      console.log('Parsed body:', jsonBody);
+      console.log('Parsed body:', 'jsonBody');
     } catch (e) {
       console.log('Could not parse body as JSON');
     }
   } else {
-    console.log('Body:', req.body);
+    console.log('Body:', 'req.body');
   }
   
   res.status(200).send('OK');
