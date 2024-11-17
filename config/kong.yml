@@ -28,3 +28,13 @@ plugins:
       allowed_payload_size: 1
       size_unit: kilobytes
       require_content_length: false
+
+  - name: http-log
+    config:
+      http_endpoint: "http://host.docker.internal:3000/logs"
+      method: POST
+      timeout: 1000
+      keepalive: 1000
+      flush_timeout: 2
+      queue:
+        max_retry_time: 10
