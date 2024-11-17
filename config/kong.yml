@@ -15,3 +15,9 @@ services:
       - name: service-two-route
         paths:
           - /service2
+
+plugins:
+  - name: bot-detection
+    config:
+      deny:
+        - (M|m)ozilla
