@@ -15,3 +15,9 @@ services:
       - name: service-two-route
         paths:
           - /service2
+
+plugins:
+  - name: ip-restriction
+    config:
+      allow:
+        - 143.1.0.0/24
