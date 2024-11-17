@@ -1,0 +1,48 @@
+_format_version: "2.1"
+_transform: true
+
+services:
+  - name: service-one
+    url: http://host.docker.internal:3000
+    routes:
+      - name: service-one-route
+        paths:
+          - /service1
+        plugins:
+          - name: cors
+            config:
+              origins:
+                - "http://info.cern.ch"
+              methods:
+                - GET
+                - POST
+                - PUT
+                - DELETE
+                - OPTIONS
+              headers:
+                - "*"
+              exposed_headers:
+                - "*"
+
+  - name: service-two
+    url: http://host.docker.internal:3001
+    routes:
+      - name: service-two-route
+        paths:
+          - /service2
+
+plugins:
+  - name: cors
+    config:
+      origins:
+        - "*"
+      methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      headers:
+        - "*"
+      exposed_headers:
+        - "*"
