@@ -22,3 +22,9 @@ plugins:
       status_code: 403
       message: So long and thanks for all the fish!
       trigger: "q"
+
+  - name: request-size-limiting
+    config:
+      allowed_payload_size: 1
+      size_unit: kilobytes
+      require_content_length: false
