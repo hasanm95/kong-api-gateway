@@ -1,0 +1,7 @@
+{
+  "name": "kong-custom-plugins",
+  "version": "0.1.0",
+  "dependencies": {
+    "kong-pdk": "^0.5.5"
+  }
+}
